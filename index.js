@@ -197,12 +197,20 @@ function startRecording(streamUrl, duration, outputFilename, replyToMessage) {
         clearTimeout(timeout);
         currentRecordings.delete(streamUrl);
 
-        setTimeout(() => {
+        setTimeout(async () => {
             // wait a little bit before sending
-            telegramBot.sendFile(webmOutputFilename, outputFilename, replyToMessage)
+            console.log('webmOutputFilename :>> ', webmOutputFilename);
+            try {
+                await telegramBot.sendFile(webmOutputFilename, outputFilename, replyToMessage)
+            }
+            catch(e) {
+                console.log('e :>> ', e);
+            }
+            // telegramBot.sendFile(webmOutputFilename, outputFilename, replyToMessage)
+            console.log('waited for sending :>> ');
 
-            setTimeout(() => removeFile(webmOutputFilename), dayjs.duration(30, "seconds").asMilliseconds());
-        }, dayjs.duration(30, "seconds").asMilliseconds())
+            setTimeout(() => removeFile(webmOutputFilename), dayjs.duration(5, "seconds").asMilliseconds());
+        }, dayjs.duration(5, "seconds").asMilliseconds())
     });
 }
 
@@ -250,7 +258,7 @@ function validateDaterange(startDate, endDate) {
 }
 
 function killStreamSafer(pid) {
-    console.log(`Killing child process after minutes.`);
+    console.log("Killing child process.");
     treeKill(pid, "SIGTERM")
 }
 

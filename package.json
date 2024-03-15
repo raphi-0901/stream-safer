@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon yt.js",
     "start": "node index.js"
   },
   "keywords": [],
@@ -16,6 +16,7 @@
     "dayjs": "^1.11.10",
     "dotenv": "^16.4.4",
     "fluent-ffmpeg": "^2.1.2",
+    "googleapis": "^134.0.0",
     "m3u8-parser": "^7.1.0",
     "telebot": "^1.4.1",
     "tree-kill": "^1.2.2"

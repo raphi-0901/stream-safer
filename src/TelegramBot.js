@@ -1,6 +1,4 @@
 import TeleBot from 'telebot';
-import axios from "axios";
-import fs from "fs";
 
 export class TelegramBot {
     constructor() {
